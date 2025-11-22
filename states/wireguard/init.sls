@@ -3,23 +3,14 @@ wireguard:
 wireguard-tools:
     pkg.installed: []
 
-{% if True %} # LEGACY
-generate_wireguard_genkey:
-    cmd.run:
-        - name: /usr/bin/wg genkey > /etc/wireguard/key.secret
-        - creates: /etc/wireguard/key.secret
-generate_wireguard_genpsk:
-    cmd.run:
-        - name: /usr/bin/wg genpsk > /etc/wireguard/psk.secret
-        - creates: /etc/wireguard/psk.secret
-
-/etc/salt/minion.d/mine_wireguard.conf:
-    file.managed:
-        - template: jinja
-        - source: salt://salt/files/mine_wireguard.conf
-        - watch_in:
-            - service: salt-minion
-{% endif %}
+# cleanup previous implementation
+{% for filename in ['key.secret', 'psk.secret', 'wg-salt.conf', 'wg-salt.template.conf'] %}
+/etc/wireguard/{{ filename }}:
+    file.absent: []
+{% endfor %}
+wg-quick@wg-salt:
+    service.dead:
+        - enable: False
 
 # server mode (+ cleanup)
 {% if 'wireguard_server' in pillar %}
