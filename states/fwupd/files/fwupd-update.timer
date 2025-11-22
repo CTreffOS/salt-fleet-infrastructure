@@ -1,0 +1,10 @@
+[Unit]
+Description=Trigger system firmware updates
+
+[Timer]
+OnCalendar=Mon
+RandomizedDelaySec=4d
+Persistent=true
+
+[Install]
+WantedBy=multi-user.target

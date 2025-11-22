@@ -1,0 +1,7 @@
+[Unit]
+Description=Update system firmware
+
+[Service]
+ExecStartPre=/usr/bin/fwupdmgr refresh
+ExecStart=/usr/bin/fwupdmgr update --no-reboot-check --no-device-prompt --assume-yes
+SuccessExitStatus=0 2

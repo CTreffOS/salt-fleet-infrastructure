@@ -5,3 +5,4 @@ base:
     
     'ctreffos*':
         - packagekit
+        - fwupd
