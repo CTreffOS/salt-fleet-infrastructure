@@ -150,7 +150,7 @@ wireguard_mine_{{ key }}:
             - mine_function: cmd.run
             - cmd: "cat /etc/wireguard/wg-salt-{{ instance_id }}.psk"
 
-{% if instance_address_ns.found is defined %}
+{% if instance_address_ns.found %}
 /etc/wireguard/wg-salt-{{ instance_id }}.template.conf:
     file.managed:
         - template: jinja
