@@ -1,0 +1,10 @@
+[Unit]
+Description=Trigger flatpak packet cleanup ({{ flatpak_mode }})
+
+[Timer]
+OnCalendar=daily
+RandomizedDelaySec=1d
+Persistent=true
+
+[Install]
+WantedBy={{ systemd_target }}.target

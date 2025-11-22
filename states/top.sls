@@ -6,3 +6,4 @@ base:
     'ctreffos*':
         - packagekit
         - fwupd
+        - flatpak

@@ -1,0 +1,6 @@
+[Unit]
+Description=Update flatpak packets ({{ flatpak_mode }})
+After=network-online.target
+
+[Service]
+ExecStart=/usr/bin/flatpak --{{ flatpak_mode }} update --assumeyes --noninteractive

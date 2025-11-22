@@ -1,0 +1,5 @@
+[Unit]
+Description=Cleanup flatpak packets ({{ flatpak_mode }})
+
+[Service]
+ExecStart=/usr/bin/flatpak --{{ flatpak_mode }} uninstall --unused

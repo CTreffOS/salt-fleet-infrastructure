@@ -1,0 +1,12 @@
+[Unit]
+Description=Trigger flatpak packet updates ({{ flatpak_mode }})
+After=network-online.target
+
+[Timer]
+OnCalendar=daily
+OnBootSec=30s
+RandomizedDelaySec=1h
+Persistent=false
+
+[Install]
+WantedBy={{ systemd_target }}.target
