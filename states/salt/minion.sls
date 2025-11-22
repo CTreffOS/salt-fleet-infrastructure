@@ -20,4 +20,3 @@ salt_apply:
 salt-minion:
   service.running:
     - enable: True
-

@@ -1,0 +1,9 @@
+# this file enables the hosting of a wireguard endpoint to be deployed onto *all other* nodes
+
+# unique id, will be used for interface name (like "wg-salt-ID") and config files, must never change once configured
+id: "01"
+# the public reachable endpoint for the clients
+host: salt-mass-vpn.chaostreff-osnabrueck.de
+port: 12754
+# the vpn subnet, the server will always be .1
+subnet: "10.13.38.{}"
