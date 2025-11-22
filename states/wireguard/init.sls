@@ -4,13 +4,13 @@ wireguard-tools:
     pkg.installed: []
 
 # cleanup previous implementation
+wg-quick@wg-salt:
+    service.dead:
+        - enable: False
 {% for filename in ['key.secret', 'psk.secret', 'wg-salt.conf', 'wg-salt.template.conf'] %}
 /etc/wireguard/{{ filename }}:
     file.absent: []
 {% endfor %}
-wg-quick@wg-salt:
-    service.dead:
-        - enable: False
 
 # server mode (+ cleanup)
 {% if 'wireguard_server' in pillar %}
@@ -40,6 +40,8 @@ wg-quick@wg-salt:
 /etc/wireguard/wg-server.conf:
     cmd.wait:
         - name: sed "s:INJECT_PRIVATE_KEY_HERE:$(cat /etc/wireguard/wg-server.key | tr -d '\n'):g" /etc/wireguard/wg-server.template.conf > /etc/wireguard/wg-server.conf
+        - requires:
+            - file: /etc/wireguard/wg-server.template.conf
         - watch_in:
             - service: /etc/wireguard/wg-server.conf
             # also trigger mine update only when key changes
@@ -159,6 +161,9 @@ wireguard_mine_{{ key }}:
             peer_key: "{{ instance_server_public_key | trim() }}"
             peer_ip: "{{ instance_subnet.format(1) | trim() }}"
             peer_endpoint: "{{ instance_endpoint | trim() }}"
+        - requires:
+            - file: /etc/wireguard/wg-salt-{{ instance_id }}.key
+            - file: /etc/wireguard/wg-salt-{{ instance_id }}.psk
         - watch_in:
             - cmd: /etc/wireguard/wg-salt-{{ instance_id }}.conf
 
