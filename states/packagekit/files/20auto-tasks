@@ -1,0 +1,9 @@
+#
+# THIS FILE IS MANAGED BY SALTSTACK.
+# DO NOT MAKE ANY MODIFICATIONS HERE AS THEY WILL BE OVERWRITTEN.
+# YOU FIND THE SOURCE FILE AT
+#
+#   {{ grains['master'] }} -> {{ source }}
+#
+APT::Periodic::AutocleanInterval "7";
+APT::Periodic::CleanInterval "14";

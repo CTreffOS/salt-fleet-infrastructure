@@ -1,0 +1,11 @@
+[Unit]
+Description=Prepare and trigger packagekit offline updates
+After=network-online.target
+
+[Service]
+# if any comand here fails, do not worry as this is also the case on no updates being available
+Type=oneshot
+ExecStartPre=-/usr/bin/pkcon refresh
+ExecStartPre=-/usr/bin/pkcon update --only-download --allow-downgrade --background
+ExecStart=-/usr/bin/pkcon offline-trigger
+ExecStop=-/usr/bin/pkcon offline-get-prepared
