@@ -7,6 +7,8 @@ wireguard-tools:
 wg-quick@wg-salt:
     service.dead:
         - enable: False
+/etc/salt/minion.d/mine_wireguard.conf:
+    file.absent: []
 {% for filename in ['key.secret', 'psk.secret', 'wg-salt.conf', 'wg-salt.template.conf'] %}
 /etc/wireguard/{{ filename }}:
     file.absent: []
@@ -117,6 +119,7 @@ wireguard_mine_{{ key }}:
 {% set instance_endpoint = salt['mine.get'](server_node_id, 'wireguard_vpn_server:endpoint').get(server_node_id) %}
 {% set instance_hosts = salt['mine.get'](server_node_id, 'wireguard_vpn_server:hosts').get(server_node_id) %}
 {% set instance_subnet = salt['mine.get'](server_node_id, 'wireguard_vpn_server:subnet').get(server_node_id) %}
+{% set instance_psk = salt['mine.get'](grains["id"], 'wireguard_vpn_server:' + instance_id + ':psk').get(grains["id"]) %} # get own psk from mine
 
 {% set instance_address_ns = namespace(found=None) %}      
 {% for line in instance_hosts.split('\n') %}{% if line.strip() == grains["id"] %}
@@ -161,6 +164,7 @@ wireguard_mine_{{ key }}:
             peer_key: "{{ instance_server_public_key | trim() }}"
             peer_ip: "{{ instance_subnet.format(1) | trim() }}"
             peer_endpoint: "{{ instance_endpoint | trim() }}"
+            peer_psk: "{{ instance_psk | trim() }}"
         - requires:
             - file: /etc/wireguard/wg-salt-{{ instance_id }}.key
             - file: /etc/wireguard/wg-salt-{{ instance_id }}.psk
