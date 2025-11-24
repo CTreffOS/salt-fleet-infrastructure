@@ -13,3 +13,4 @@ base:
         - fwupd
         - flatpak
         - ssh.auth
+        - avahi
