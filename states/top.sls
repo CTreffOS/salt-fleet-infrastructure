@@ -14,3 +14,4 @@ base:
         - flatpak
         - ssh.auth
         - avahi
+        - timeshift
