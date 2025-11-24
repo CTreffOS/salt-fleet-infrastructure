@@ -15,3 +15,4 @@ base:
         - ssh.auth
         - avahi
         - timeshift
+        - keyboard
