@@ -17,3 +17,4 @@ base:
         - avahi
         - timeshift
         - keyboard
+        - network_manager
