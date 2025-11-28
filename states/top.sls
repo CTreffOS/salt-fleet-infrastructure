@@ -6,6 +6,9 @@ base:
         - base
         - motd
         - ssh
+
+    'knox*':
+        - nftables
     
     'ctreffos*':
         - users
