@@ -1,9 +1,14 @@
+util-linux:
+    pkg.installed: []
+
 timeshift:
     pkg.installed: []
     cmd.run:
-        - name: "timeshift --scripted --create --rsync --snapshot-device /dev/sda2 --tags B"
-        - creates: /etc/timeshift/timeshift.json
+        - name: "timeshift --scripted --create --rsync --snapshot-device $(findmnt -n -o SOURCE /) --tags B"
+        # checkin for first run marker
+        - unless: jq .do_first_run /etc/timeshift/timeshift.json | grep false
         - requires:
+            - pkg: util-linux # for findmnt
             - pkg: timeshift
         - watch_in:
             - cmd: /etc/timeshift/timeshift.json
