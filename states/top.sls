@@ -21,3 +21,4 @@ base:
         - timeshift
         - keyboard
         - network_manager
+        - vscodium
