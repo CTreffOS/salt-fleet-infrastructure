@@ -14,6 +14,8 @@ python3:
     pkg.installed: []
 build-essential:
     pkg.installed: []
+cmake:
+    pkg.installed: []
 cargo:
     pkg.installed: []
 curl:
