@@ -20,3 +20,9 @@ salt_apply:
 salt-minion:
   service.running:
     - enable: True
+
+/usr/local/bin/salt-state:
+  file.managed:
+    - source: salt://salt/files/salt-state.sh
+    - template: jinja
+    - mode: "0555"
