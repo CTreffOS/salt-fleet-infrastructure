@@ -5,6 +5,12 @@ htop:
 vim:
     pkg.installed: []
 
+# userspace
+imagemagick:
+    pkg.installed: []
+gimp:
+    pkg.installed: []
+
 # development
 git:
     pkg.installed: []
