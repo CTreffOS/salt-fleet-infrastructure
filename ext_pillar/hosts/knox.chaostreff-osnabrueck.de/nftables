@@ -1,10 +1,11 @@
-content: |
-    table inet filter {
-        chain input {
+content:
+    filter:
+        input: |
             # rabbithole vpn
             udp dport 17434 accept
 
             # grant access to salt for initial adoption
             iif rabbithole tcp dport { 4505, 4506 } ct state new accept
-        }
-    }
+
+            # for easier debugging, allow pinging to the SALT interface
+            iif rabbithole icmp type { echo-request, echo-reply } accept
