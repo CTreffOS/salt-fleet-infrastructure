@@ -14,7 +14,6 @@ plymouth-themes:
 /usr/share/plymouth/themes/spinner/header-image.png:
     file.managed:
         - source: salt://plymouth/files/header.png
-        - template: jinja
         - require:
             - pkg: plymouth-themes
 
