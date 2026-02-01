@@ -1,6 +1,7 @@
 [Timer]
+OnBootSec=5m
 OnCalendar=daily
-RandomizedDelaySec=1d
+RandomizedDelaySec=6h
 Persistent=true
 
 [Install]
