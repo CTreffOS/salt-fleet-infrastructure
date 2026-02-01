@@ -2,7 +2,7 @@ content: |
     table inet filter {
         chain input {
             # rabbithole vpn
-            udp dport 80 accept
+            udp dport 17434 accept
 
             # grant access to salt for initial adoption
             iif rabbithole tcp dport { 4505, 4506 } ct state new accept
