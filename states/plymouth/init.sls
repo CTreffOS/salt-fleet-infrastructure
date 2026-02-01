@@ -1,12 +1,5 @@
 plymouth:
     pkg.installed: []
-    cmd.wait:
-        - name: plymouth-set-default-theme -R spinner
-        - require:
-            - pkg: plymouth
-            - pkg: plymouth-themes
-        - watch:
-            - pkg: plymouth-themes
 
 plymouth-themes:
     pkg.installed: []
@@ -24,6 +17,15 @@ plymouth-themes:
         - template: jinja
         - require:
             - pkg: plymouth-themes
+
+plymouth-set-default-theme -R spinner:
+    cmd.wait:
+        - require:
+            - pkg: plymouth
+            - pkg: plymouth-themes
+        - watch:
+            - pkg: plymouth-themes
+            - file: /usr/share/plymouth/themes/spinner/header-image.png
 
 # required to get the image properly shown upon bootup, which uses the initramfs instead
 update-initramfs -k all -u:
