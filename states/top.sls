@@ -15,6 +15,7 @@ base:
         - packagekit
         - fwupd
         - flatpak
+        - plymouth
         - ssh.auth
         - ssh.no_root
         - avahi
