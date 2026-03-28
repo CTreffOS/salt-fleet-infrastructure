@@ -11,6 +11,7 @@ base:
         - nftables
     
     'ctreffos*':
+        - systemd_repart # as early as possible, as otherwise following stuff may run into no-space-left issues!
         - users
         - base.desktop
         - packagekit
