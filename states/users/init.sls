@@ -6,6 +6,7 @@ root:
 user:
   user.present:
     - fullname: Chaos User
+    - shell: /bin/bash
     - usergroup: true
     - password: "$5$6zW8IygtZH7uAqPa$tZMIB3WlCnBgrH73nZdz3NQBscdwU5jFlEPuLXZLZP8" # mkpasswd -m sha-256
     - groups:
