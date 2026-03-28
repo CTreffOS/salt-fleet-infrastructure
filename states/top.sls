@@ -12,6 +12,7 @@ base:
     
     'ctreffos*':
         - users
+        - base.desktop
         - packagekit
         - fwupd
         - flatpak
