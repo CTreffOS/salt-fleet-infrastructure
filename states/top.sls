@@ -1,5 +1,5 @@
 base:
-    '*':
+    '*': # careful, on the laptops only the module "systemd_repart" will enlarge the rootfs - we start with ~450MB left!
         - apt
         - salt.minion
         - wireguard
