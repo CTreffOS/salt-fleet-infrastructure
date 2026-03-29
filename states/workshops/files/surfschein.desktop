@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Surfschein
+Comment=Mache deinen Internet-ABC Surfschein
+Exec=firefox --kiosk https://internet-abc.de/surfschein-quiz/
+Icon=emblem-xapp-favorite
+Terminal=false
+Type=Application
+Categories=Education;Game;
