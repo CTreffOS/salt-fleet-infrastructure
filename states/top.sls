@@ -26,3 +26,4 @@ base:
         - network_manager
         - vscodium
         - workshops.pixelflut2024
+        - firefox
