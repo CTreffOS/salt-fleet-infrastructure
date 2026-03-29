@@ -30,3 +30,4 @@ base:
         - localsend
         - workshops.pixelflut2024
         - workshops.surfschein2025
+        - firefox
