@@ -41,7 +41,7 @@
     "ExtensionSettings": {
       "uBlock0@raymondhill.net": {
         "default_area": "navbar",
-        "install_url": "https://addons.mozilla.org/firefox/downloads/file/4721638/ublock_origin-1.70.0.xpi",
+        "install_url": "https://addons.mozilla.org/firefox/downloads/file/4721638/ublock_origin-latest.xpi",
         "installation_mode": "normal_installed",
         "private_browsing": true,
         "updates_disabled": false
