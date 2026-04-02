@@ -27,7 +27,7 @@ plymouth-set-default-theme -R spinner:
             - file: /usr/share/plymouth/themes/spinner/header-image.png
 
 # required to get the image properly shown upon bootup, which uses the initramfs instead
-update-initramfs -k all -u:
+update-initramfs -k all -c:
     cmd.wait:
         - watch:
             - file: /usr/share/plymouth/themes/spinner/header-image.png
@@ -35,5 +35,6 @@ update-initramfs -k all -u:
 update-grub:
     cmd.wait:
         - watch:
+            - cmd: update-initramfs -k all -c
             - file: /etc/default/grub
             - file: /usr/share/plymouth/themes/spinner/header-image.png
