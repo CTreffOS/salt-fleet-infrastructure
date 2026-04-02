@@ -3,6 +3,7 @@ salt_apply:
     - function: state.apply
     - seconds: 300 # 5 minutes
     - splay: 30
+    - run_on_start: False # the master has a reactor installed, which auto-applies the state on minion start, so no need to also trigger it (before)
 
 /etc/salt/minion.d/master.conf:
   file.managed:
