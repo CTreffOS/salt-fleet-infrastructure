@@ -119,7 +119,6 @@ wireguard_mine_{{ key }}:
 {% set instance_endpoint = salt['mine.get'](server_node_id, 'wireguard_vpn_server:endpoint').get(server_node_id) %}
 {% set instance_hosts = salt['mine.get'](server_node_id, 'wireguard_vpn_server:hosts').get(server_node_id) %}
 {% set instance_subnet = salt['mine.get'](server_node_id, 'wireguard_vpn_server:subnet').get(server_node_id) %}
-{% set instance_psk = salt['mine.get'](grains["id"], 'wireguard_vpn_server:' + instance_id + ':psk').get(grains["id"]) %} # get own psk from mine
 
 {% set instance_address_ns = namespace(found=None) %}      
 {% for line in instance_hosts.split('\n') %}{% if line.strip() == grains["id"] %}
@@ -164,7 +163,6 @@ wireguard_mine_{{ key }}:
             peer_key: "{{ instance_server_public_key | trim() }}"
             peer_ip: "{{ instance_subnet.format(1) | trim() }}"
             peer_endpoint: "{{ instance_endpoint | trim() }}"
-            peer_psk: "{{ instance_psk | trim() }}"
         - requires:
             - file: /etc/wireguard/wg-salt-{{ instance_id }}.key
             - file: /etc/wireguard/wg-salt-{{ instance_id }}.psk
@@ -173,7 +171,7 @@ wireguard_mine_{{ key }}:
 
 /etc/wireguard/wg-salt-{{ instance_id }}.conf:
     cmd.wait:
-        - name: sed "s:INJECT_PRIVATE_KEY_HERE:$(cat /etc/wireguard/wg-salt-{{ instance_id }}.key | tr -d '\n'):g" /etc/wireguard/wg-salt-{{ instance_id }}.template.conf > /etc/wireguard/wg-salt-{{ instance_id }}.conf
+        - name: sed -e "s:INJECT_PRIVATE_KEY_HERE:$(cat /etc/wireguard/wg-salt-{{ instance_id }}.key | tr -d '\n'):g" -e "s:INJECT_PRESHARED_KEY_HERE:$(cat /etc/wireguard/wg-salt-{{ instance_id }}.psk | tr -d '\n'):g" /etc/wireguard/wg-salt-{{ instance_id }}.template.conf > /etc/wireguard/wg-salt-{{ instance_id }}.conf
         - watch_in:
             - service: /etc/wireguard/wg-salt-{{ instance_id }}.conf
     service.running:
