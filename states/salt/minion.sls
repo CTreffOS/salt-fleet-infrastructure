@@ -18,6 +18,15 @@ salt_apply:
     - watch_in:
         - service: salt-minion
 
+/etc/systemd/system/salt-minion.service.d/by-salt.conf:
+  file.managed:
+    - template: jinja
+    - source: salt://salt/files/salt-minion-override.conf
+    - mode: "0644"
+    - makedirs: True
+    - watch_in:
+        - service: salt-minion
+
 salt-minion:
   service.running:
     - enable: True
