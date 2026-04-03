@@ -20,5 +20,10 @@ firmware-iwlwifi: # our Lenovo T470s have some Intel cards needing this firmware
         - watch_in:
             - cmd: update-initramfs -k all -c
 
+modprobe -r iwlwifi && modprobe iwlwifi:
+    cmd.wait:
+        - watch:
+            - pkg: firmware-iwlwifi
+
 NetworkManager-wait-online: # really, this is a bad idea
     service.disabled: []
