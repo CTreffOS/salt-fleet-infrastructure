@@ -27,6 +27,13 @@ user:
   file.managed:
     - source: salt://users/files/background.jpg
     - mode: "0444"
+user_hide_updates:
+  cmd.run:
+    - name: "gsettings set org.gnome.software download-updates false"
+    - runas: user
+    - require:
+      - file: /usr/share/backgrounds/background.jpg
+    - unless: "gsettings get org.gnome.software download-updates | grep false"
 user_set_background:
   cmd.run:
     - name: "gsettings set org.gnome.desktop.background picture-uri file:///usr/share/backgrounds/background.jpg"
