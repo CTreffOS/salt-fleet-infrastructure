@@ -29,3 +29,4 @@ base:
         - vscodium
         - localsend
         - workshops.pixelflut2024
+        - workshops.surfschein2025
