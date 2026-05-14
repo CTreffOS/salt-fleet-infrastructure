@@ -27,4 +27,5 @@ base:
         - keyboard
         - network_manager
         - vscodium
+        - localsend
         - workshops.pixelflut2024
