@@ -1,0 +1,121 @@
+{
+  "policies": {
+    "Bookmarks": [
+      {
+        "Placement": "toolbar",
+        "Title": "Website",
+        "URL": "https://chaostreff-osnabrueck.de"
+      },
+      {
+        "Placement": "toolbar",
+        "Title": "Status",
+        "URL": "https://status.chaostreff-osnabrueck.de"
+      },
+      {
+        "Placement": "toolbar",
+        "Title": "Wiki",
+        "URL": "https://wiki.chaostreff-osnabrueck.de"
+      },
+      {
+        "Placement": "toolbar",
+        "Title": "GitHub",
+        "URL": "https://github.com/CTreffOS/"
+      },
+      {
+        "Placement": "toolbar",
+        "Title": "Jitsi Meet",
+        "URL": "https://meet.osna.social/"
+      },
+      {
+        "Placement": "toolbar",
+        "Title": "Mastodon",
+        "URL": "https://osna.social"
+      }
+    ],
+    "DisableAccounts": true,
+    "DisableFirefoxStudies": true,
+    "DisableProfileImport": true,
+    "DisableTelemetry": true,
+    "DisplayBookmarksToolbar": "always",
+    "DontCheckDefaultBrowser": true,
+    "ExtensionSettings": {
+      "uBlock0@raymondhill.net": {
+        "default_area": "navbar",
+        "install_url": "https://addons.mozilla.org/firefox/downloads/file/4721638/ublock_origin-latest.xpi",
+        "installation_mode": "normal_installed",
+        "private_browsing": true,
+        "updates_disabled": false
+      }
+    },
+    "FirefoxHome": {
+      "Highlights": false,
+      "Pocket": false,
+      "Search": true,
+      "SponsoredPocket": false,
+      "SponsoredTopSites": false,
+      "TopSites": false
+    },
+    "FirefoxSuggest": {
+      "ImproveSuggest": false,
+      "SponsoredSuggestions": false
+    },
+    "GenerativeAI": {
+      "Chatbot": false,
+      "Enabled": false,
+      "LinkPreviews": false,
+      "TabGroups": false
+    },
+    "HttpAllowlist": [
+      "http://localhost"
+    ],
+    "NoDefaultBookmarks": true,
+    "OverrideFirstRunPage": "",
+    "OverridePostUpdatePage": "",
+    "PDFjs": {
+      "EnablePermissions": false
+    },
+    "Permissions": {
+      "Autoplay": {
+        "Allow": [
+          "https://www.youtube.com"
+        ]
+      },
+      "Camera": {
+        "Allow": [
+          "https://meet.osna.social"
+        ]
+      },
+      "Location": {
+        "BlockNewRequests": true
+      },
+      "Microphone": {
+        "Allow": [
+          "https://meet.osna.social"
+        ]
+      },
+      "ScreenShare": {
+        "Allow": [
+          "https://meet.osna.social"
+        ]
+      }
+    },
+    "Preferences": {
+      "pdfjs.ignoreDestinationZoom": {
+        "Status": "user",
+        "Type": "boolean",
+        "Value": true
+      }
+    },
+    "SkipTermsOfUse": true,
+    "SupportMenu": {
+      "AccessKey": "c",
+      "Title": "Über Chaostreff Osnabrück e.V.",
+      "URL": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+    },
+    "UserMessaging": {
+      "FirefoxLabs": false,
+      "MoreFromMozilla": false,
+      "SkipOnboarding": true
+    }
+  }
+}
