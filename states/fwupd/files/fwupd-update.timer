@@ -1,3 +1,6 @@
+[Unit]
+After=network-online.target
+
 [Timer]
 # careful using RandomizedDelaySec with OnBootSec, as this also randomizes its delay
 OnBootSec=5m
