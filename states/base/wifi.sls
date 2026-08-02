@@ -2,11 +2,8 @@
     file.managed:
         - source: salt://base/files/non-free.sources
         - template: jinja
-
-apt-get update:
-    cmd.wait:
-        - watch:
-            - file: /etc/apt/sources.list.d/non-free.sources
+        - watch_in:
+            - cmd: apt-get update
 
 firmware-linux-nonfree:
     pkg.installed:
