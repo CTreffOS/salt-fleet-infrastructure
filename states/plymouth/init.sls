@@ -5,11 +5,21 @@ plymouth-themes:
     pkg.installed: []
 
 # enable plymouth, which is disabled by default
-/etc/default/grub:
+/etc/default/grub-splash:
     file.line:
         - mode: replace
         - match: "^GRUB_CMDLINE_LINUX_DEFAULT=.+"
         - content: GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"
+        - watch_in:
+            - cmd: update-grub
+# hide countdown
+/etc/default/grub-hidden:
+    file.line:
+        - mode: replace
+        - match: "^GRUB_TIMEOUT=.+"
+        - content: GRUB_TIMEOUT=0
+        - watch_in:
+            - cmd: update-grub
 
 /usr/share/plymouth/themes/spinner/header-image.png:
     file.managed:
@@ -36,5 +46,4 @@ update-grub:
     cmd.wait:
         - watch:
             - cmd: update-initramfs -k all -c
-            - file: /etc/default/grub
             - file: /usr/share/plymouth/themes/spinner/header-image.png
