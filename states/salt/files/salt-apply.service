@@ -1,0 +1,14 @@
+[Unit]
+Description=SALT state.apply
+Wants=network-online.target
+After=network.target network-online.target
+
+[Service]
+Type=simple
+{%- if salt['file.file_exists']('/usr/bin/systemd-inhibit') %}
+ExecStart=/usr/bin/systemd-inhibit --what=shutdown --who="SALT" --why="state.apply" --mode=block /usr/bin/salt-call state.apply -l error --retcode-passthrough
+{%- else %}
+# for legacy systems, this also runs without systemd-inhibit using the old syntax
+ExecStart=/usr/bin/salt-call state.apply -l error --retcode-passthrough
+{%- endif %}
+TimeoutStopSec=30

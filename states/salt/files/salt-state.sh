@@ -10,6 +10,10 @@ echo "*** Is the SALT minion active?"
 systemctl --no-pager status salt-minion
 echo ""
 
+echo "*** Is the SALT apply working?"
+systemctl --no-pager status salt-apply
+echo ""
+
 echo "*** Is the SALT VPN connected (look for latest handshake)?"
 wg show
 echo ""

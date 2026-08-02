@@ -1,0 +1,10 @@
+[Unit]
+Description=SALT state.apply
+
+[Timer]
+OnBootSec=2min
+OnUnitInactiveSec=5min
+RandomizedDelaySec=30sec
+
+[Install]
+WantedBy=multi-user.target

@@ -1,9 +1,5 @@
 salt_apply:
-  schedule.present:
-    - function: state.apply
-    - seconds: 300 # 5 minutes
-    - splay: 30
-    - run_on_start: False # the master has a reactor installed, which auto-applies the state on minion start, so no need to also trigger it (before)
+  schedule.absent: [] # due to the wrapping call to systemd.inhibit, this logic was moved into an own systemd-unit
 
 /etc/salt/minion.d/master.conf:
   file.managed:
@@ -30,6 +26,29 @@ salt_apply:
 salt-minion:
   service.running:
     - enable: True
+
+/etc/systemd/system/salt-apply.service:
+  file.managed:
+    - source: salt://salt/files/salt-apply.service
+    - template: jinja
+
+/etc/systemd/system/salt-apply.timer:
+  file.managed:
+    - source: salt://salt/files/salt-apply.timer
+    - template: jinja
+    - require:
+        - file: /etc/systemd/system/salt-apply.service
+
+salt-apply.timer:
+  service.running:
+    - enable: True
+    - require:
+        - file: /etc/systemd/system/salt-apply.service
+        - file: /etc/systemd/system/salt-apply.timer
+        - service: salt-minion
+    - watch:
+        - file: /etc/systemd/system/salt-apply.service
+        - file: /etc/systemd/system/salt-apply.timer
 
 /usr/local/bin/salt-state:
   file.managed:
