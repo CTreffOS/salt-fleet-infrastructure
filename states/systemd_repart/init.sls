@@ -12,14 +12,14 @@ systemd-repart: # needed to update the partition table, so systemd-growfs can wo
         - require:
             - file: /usr/lib/repart.d/50-root.conf
     service.running:
-        - watch: # only start if the service was just installed (otherwise done on next reboot, bad if SALT starts NOW)
+        - onchanges: # only start if the service was just installed (otherwise done on next reboot, bad if SALT starts NOW)
             - pkg: systemd-repart
         - require:
             - pkg: systemd-repart
 
 systemd-growfs-root.service:
     service.running:
-        - watch:
+        - onchanges:
             - pkg: systemd-repart # only start if the service if systemd-repart was just installed
             - service: systemd-repart # ...or ran explicitly
         - require:
