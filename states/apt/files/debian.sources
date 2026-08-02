@@ -1,0 +1,11 @@
+Types: deb
+URIs: https://deb.debian.org/debian
+Suites: {{grains['oscodename']}} {{grains['oscodename']}}-updates
+Components: main contrib
+Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
+
+Types: deb
+URIs: https://security.debian.org/debian-security
+Suites: {{grains['oscodename']}}-security
+Components: main contrib
+Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
