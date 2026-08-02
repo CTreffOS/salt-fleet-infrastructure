@@ -1,7 +1,8 @@
 [Timer]
+# careful using RandomizedDelaySec with OnBootSec, as this also randomizes its delay
 OnBootSec=5m
 OnCalendar=daily
-RandomizedDelaySec=6h
+RandomizedDelaySec=15m
 Persistent=true
 
 [Install]
