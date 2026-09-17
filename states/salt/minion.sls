@@ -55,3 +55,8 @@ salt-apply.timer:
     - source: salt://salt/files/salt-state.sh
     - template: jinja
     - mode: "0555"
+
+# cleanup possible old Ansible remains
+reboot.target: service.unmasked
+shutdown.target: service.unmasked
+suspend.target: service.unmasked
