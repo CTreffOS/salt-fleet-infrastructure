@@ -1,0 +1,19 @@
+[connection]
+id=workshop
+uuid=a4562459-c558-420c-a43f-fdac792ad40c
+type=wifi
+
+[wifi]
+mode=infrastructure
+ssid={{ pillar["wifi_workshop"]["ssid"] }}
+
+[wifi-security]
+auth-alg=open
+key-mgmt=wpa-psk
+psk={{ pillar["wifi_workshop"]["psk"] }}
+
+[ipv4]
+method=auto
+
+[ipv6]
+method=auto
