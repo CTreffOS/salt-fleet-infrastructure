@@ -7,6 +7,7 @@ plymouth-themes:
 # enable plymouth, which is disabled by default
 /etc/default/grub-splash:
     file.line:
+        - name: /etc/default/grub
         - mode: replace
         - match: "^GRUB_CMDLINE_LINUX_DEFAULT=.+"
         - content: GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"
@@ -15,6 +16,7 @@ plymouth-themes:
 # hide countdown
 /etc/default/grub-hidden:
     file.line:
+        - name: /etc/default/grub
         - mode: replace
         - match: "^GRUB_TIMEOUT=.+"
         - content: GRUB_TIMEOUT=0
