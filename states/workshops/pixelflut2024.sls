@@ -3,7 +3,7 @@ pixelflut:
         - name: https://github.com/CTreffOS/ctreffos-pixelflut.git
         - target: /home/user/pixelflut
         - user: user
-        - force_reset: True
+        - force_reset: remote-changes # do NOT discard local changes, except if the upstream changed
 
 {% if "pixelflut" in pillar %}
 /home/user/pixelflut/server_ip.txt:
