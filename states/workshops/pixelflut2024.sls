@@ -12,4 +12,6 @@ pixelflut:
         - group: user
         - mode: 444
         - contents: {{ pillar["pixelflut"]["server_ip"] }}
+        - requires:
+            - git: pixelflut
 {% endif %}
