@@ -15,10 +15,12 @@
             - service: NetworkManager
 {% endif %}
 
+
+/etc/NetworkManager/system-connections/workshop.nmconnection: file.absent
 {% if "wifi_workshop" in pillar %}
-/etc/NetworkManager/system-connections/workshop.nmconnection:
+/etc/NetworkManager/system-connections/by-salt-workshop.nmconnection:
     file.managed:
-        - source: salt://network_manager/files/workshop.nmconnection
+        - source: salt://network_manager/files/by-salt-workshop.nmconnection
         - template: jinja
         - mode: "0400"
         - watch_in:
