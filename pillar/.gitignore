@@ -1,2 +1,3 @@
 wifi_radius_credentials.sls
 wifi_workshop.sls
+workshop_pxelflut.sls
